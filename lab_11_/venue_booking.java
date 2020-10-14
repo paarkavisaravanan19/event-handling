@@ -11,14 +11,13 @@ package lab_11_;
  */
 public class venue_booking {
     public static void main(String args[]) throws InterruptedException{
-        int temp=0;
         booking obj=new booking();
-        cse c=new cse(obj,temp);
-        ece e=new ece(obj,temp);
-        eee e1=new eee(obj,temp);
-        civil c1=new civil(obj,temp);
-        mech m=new mech(obj,temp);
-        it i1=new it(obj,temp);
+        cse c=new cse(obj);
+        ece e=new ece(obj);
+        eee e1=new eee(obj);
+        civil c1=new civil(obj);
+        mech m=new mech(obj);
+        it i1=new it(obj);
         c.start();
         e.start();
         e1.start();
@@ -33,18 +32,11 @@ public class venue_booking {
 class booking
 {
     int count=0;
-    cse cs;
-    int getcount()
-    {
-        return count;
-    }
-   synchronized public void seminar_hall(int c)
+   synchronized public void seminar_hall()
     {
         
        if(count<3)
         {
-          
-          
         System.out.println("Booked successfully..:)!!!");
         count++;
         }
@@ -59,42 +51,28 @@ class booking
 class cse extends Thread
 {
     booking b;
-    int temp=0;
-    
-    public cse(booking b,int temp) {
+    public cse(booking b) {
         this.b = b;
-       this.temp=temp;
    
 }
     public void run()
     {
-     
-        
-       b.getcount();
-        int c=temp+1;
-        b.seminar_hall(c);
-       
-       
-        
+    b.seminar_hall();
     }
     
 }
 class ece extends Thread
 {
     booking b;
-    int temp=0;
-  
-    public ece(booking b,int temp) 
+    public ece(booking b) 
     {
         this.b = b;
-        this.temp=temp;
+        
       
     }
     public void run()
     {
-     
-        int c=temp+1;
-        b.seminar_hall(c);
+        b.seminar_hall();
        
     }
     
@@ -102,37 +80,26 @@ class ece extends Thread
 class eee extends Thread
 {
     booking b;
-    int temp=0;
-    public eee(booking b,int temp) {
+    public eee(booking b) {
         this.b = b;
-        this.temp=temp;
-        
     }
     public void run()
     {
-        int c=temp+1;
-        b.seminar_hall(c);
-       
-    }
+     
+        b.seminar_hall();
+   }
     
 }
 class civil extends Thread
 {
-   
-    booking b;
-    int temp=0;
-    public civil(booking b,int temp) {
+   booking b;
+    public civil(booking b) {
         this.b = b;
-        this.temp=temp;
     
     }
     public void run()
     {
-    
-       
-       int c=temp+1;
-        b.seminar_hall(c);
-        
+        b.seminar_hall();
     }
     
 }
@@ -140,17 +107,13 @@ class mech extends Thread
 {
   
     booking b;
-  int temp=0;
-    public mech(booking b,int temp) {
+    public mech(booking b) {
         this.b = b;
-        this.temp=temp;
         
     }
     public void run()
     {
-     
-        int c=temp+1;
-        b.seminar_hall(c);
+        b.seminar_hall();
      
     }
     
@@ -158,16 +121,14 @@ class mech extends Thread
 class it extends Thread
 {
     booking b;
-int temp=0;
-    public it(booking b,int temp) {
+    public it(booking b) {
         this.b = b;
-        this.temp=temp;
        
     }
     public void run()
     {
-        int c=temp+1;
-        b.seminar_hall(c);
+       
+        b.seminar_hall();
         
     }
     
